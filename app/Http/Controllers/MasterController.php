@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TodoList;
 
 class MasterController extends Controller
 {
@@ -13,7 +14,11 @@ class MasterController extends Controller
      */
     public function index()
     {
-        return "Masuk";
+        $data = TodoList::all(); // Seperti `SELECT * FROM table`
+        // dd($data);
+        return view('master/index', [
+            "data" => $data // Ini parsin data
+        ]);
     }
 
     /**
